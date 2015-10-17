@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::group(['prefix'=>'api'], function(){
 	Route::group(['prefix'=>'user'],function(){
 

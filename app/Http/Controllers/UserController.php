@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
 use App\User;
@@ -9,6 +11,8 @@ use Response;
 class UserController extends Controller
 {
     public function __construct(User $user){
+        header('Access-Control-Allow-Origin: *'); 
+        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
     	$this->user = $user;
     }
 
@@ -26,11 +30,12 @@ class UserController extends Controller
     }
     public function saveUser()
     {
-    	$user = $this->user->saveUser();
+    	
+        $user = $this->user->saveUser();
     	if(!$user){
     		return Response::json(['response'=>"Registro não adicionado!"], 400);
     	}
-    	return Response::json($this->user->saveUser(),200);
+    	return Response::json(['response'=>"Registro adicionado!"],200);
     }
     public function updateUser($id)
     {
